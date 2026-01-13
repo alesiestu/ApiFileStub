@@ -938,12 +938,15 @@ fn normalize_json_file(input: &str) -> Result<String, Response> {
 
 // Load log ignore patterns from config.
 fn read_log_ignore_patterns() -> Vec<String> {
+    let mut defaults = vec!["/".to_string(), "/events".to_string()];
     let path = base_config_dir().join("log_ignore.txt");
     let contents = std::fs::read_to_string(path).unwrap_or_default();
-    contents
+    let mut from_file: Vec<String> = contents
         .lines()
         .filter_map(|line| normalize_log_pattern(line))
-        .collect()
+        .collect();
+    defaults.append(&mut from_file);
+    defaults
 }
 
 // Load the global log enabled toggle.
