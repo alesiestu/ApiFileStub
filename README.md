@@ -3,6 +3,8 @@
 JsonStub is a tiny Rust server that exposes files in `json/` as HTTP endpoints.
 It is meant to quickly mock API responses from local JSON files.
 
+Author: Alessandro Iannacone - https://iannaconealessandro.it
+
 ## Features
 
 - Serves any file under `json/` at `/json/<subdir>/<path>`
@@ -64,4 +66,4 @@ Requests and filesystem events are logged to stdout.
 
 ## License
 
-MIT
+Source-available and open for personal and internal use, but not for commercial use.
